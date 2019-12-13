@@ -1,9 +1,11 @@
 <div>
-  <input [(ngModel)]="counter$.value1" type="text" value= "{{(counter$ | async).value1}}"><br/><br/>
-  <button (click)="decrement1()">-</button>
-  <button (click)="increment1()">+</button>
+  <input [(ngModel)]="fname" (focus)="isFocusedFirstName()" type="text" value= "{{(counter$ | async)}}"><br/><br/>
+  
 <br/><br/>
-  <input type="text" value= "{{(counter$ | async).value2}}"><br/><br/>
-  <button (click)="decrement2()">-</button>
-  <button (click)="increment2()">+</button>
+  <input [(ngModel)]="lname"  (focus)="isFocusedLastName()"type="text" value= "{{(counter$ | async)}}"><br/><br/>
+  
+  <button (click)="submit()">submit</button>
+
 </div>
+
+

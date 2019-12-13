@@ -3,7 +3,8 @@ import { NgRedux, select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 
 import { IAppState } from './store/index';
-import { INCREMENT1, DECREMENT1, INCREMENT2, DECREMENT2 } from './actions/counter.actions';
+import { SUBMIT ,ISFOCUSEDFIRSTNAME,ISFOCUSEDLASTNAME} from './actions/counter.actions';
+let temp:any;
 
 @Component({
   selector: 'app-root',
@@ -12,22 +13,28 @@ import { INCREMENT1, DECREMENT1, INCREMENT2, DECREMENT2 } from './actions/counte
 })
 export class AppComponent {
   title = 'ReduxSample';
-  @select('counter') public counter$: Observable<any>;
-
+  @select('counter')  public counter$: Observable<any>;
+  
   constructor(private ngRedux: NgRedux<IAppState>) { }
+  
+  ngOnInit(){
+    var temp;
+    this.counter$.subscribe(e=>temp=e)
+    this.fname=temp.value1.value,
+    this.lname=temp.value1.value
+  }
+  fname:string;
+  lname:string;
+  submit(){
+    this.ngRedux.dispatch({ type: SUBMIT,data:{ fName:this.fname,lName:this.lname}});
+  }
+  isFocusedFirstName(){
+    this.ngRedux.dispatch({type:ISFOCUSEDFIRSTNAME,data:{}})
+  }
+  isFocusedLastName()
+  {
+    this.ngRedux.dispatch({type:ISFOCUSEDLASTNAME,data:{}})
 
-  decrement1() {
-    this.ngRedux.dispatch({ type: DECREMENT1 });
   }
-
-  increment1() {
-    this.ngRedux.dispatch({ type: INCREMENT1 });
-  }
-  decrement2() {
-    this.ngRedux.dispatch({ type: DECREMENT2 });
-  }
-
-  increment2() {
-    this.ngRedux.dispatch({ type: INCREMENT2 });
-  }
+  
 }
