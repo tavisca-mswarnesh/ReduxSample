@@ -1,11 +1,23 @@
-<div>
-  <input [(ngModel)]="fname" (focus)="isFocusedFirstName()" type="text" value= "{{(counter$ | async)}}"><br/><br/>
+<div class=box>
+  <h1>FORM 1</h1>
+  <p>First Name:</p><input [(ngModel)]="fname" (focus)="isFocusedFirstName(true)" (focusout)="isFocusedFirstName(false)" type="text" value= "{{(counter$ | async)}}"><br/><br/>
   
 <br/><br/>
-  <input [(ngModel)]="lname"  (focus)="isFocusedLastName()"type="text" value= "{{(counter$ | async)}}"><br/><br/>
+  <input [(ngModel)]="lname"  (focus)="isFocusedLastName(true)" (focusout)="isFocusedLastName(false)" type="text" value= "{{(counter$ | async)}}"><br/><br/>
   
   <button (click)="submit()">submit</button>
 
 </div>
 
+<div class=box>
+    <h1>FORM 2</h1>
+    <input [(ngModel)]="fname" (focus)="isFocusedFirstName(true)" (focusout)="isFocusedFirstName(false)" type="text" value= "{{(counter$ | async)}}"><br/><br/>
+    
+  <br/><br/>
+    <input [(ngModel)]="lname"  (focus)="isFocusedLastName(true)" (focusout)="isFocusedLastName(false)" type="text" value= "{{(counter$ | async)}}"><br/><br/>
+    
+    <button (click)="submit()">submit</button>
+  
+  </div>
+  
 

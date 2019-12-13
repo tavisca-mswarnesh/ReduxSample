@@ -21,19 +21,19 @@ export class AppComponent {
     var temp;
     this.counter$.subscribe(e=>temp=e)
     this.fname=temp.value1.value,
-    this.lname=temp.value1.value
+    this.lname=temp.value2.value
   }
   fname:string;
   lname:string;
   submit(){
     this.ngRedux.dispatch({ type: SUBMIT,data:{ fName:this.fname,lName:this.lname}});
   }
-  isFocusedFirstName(){
-    this.ngRedux.dispatch({type:ISFOCUSEDFIRSTNAME,data:{}})
+  isFocusedFirstName(status:boolean){
+    this.ngRedux.dispatch({type:ISFOCUSEDFIRSTNAME,data:{status}})
   }
-  isFocusedLastName()
+  isFocusedLastName(status:boolean)
   {
-    this.ngRedux.dispatch({type:ISFOCUSEDLASTNAME,data:{}})
+    this.ngRedux.dispatch({type:ISFOCUSEDLASTNAME,data:{status}})
 
   }
   
